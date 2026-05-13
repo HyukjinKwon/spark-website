@@ -15,23 +15,23 @@ These small differences account for Spark's nature as a multi-module project.
 
 <h3>Spark versions</h3>
 
-Each Spark release will be versioned: `[MAJOR].[MINOR].[MAINTENANCE]`
+Each Spark release will be versioned: `[MAJOR].[FEATURE].[MAINTENANCE]`
 
-- **MAJOR**: Major releases occur annually and may include breaking changes, third-party dependency 
+- **MAJOR**: Major releases occur annually, third-party dependency 
 upgrades, and major code refactoring. All releases with the same major version number will have 
 API compatibility.
-- **MINOR**: Minor releases occur quarterly (every 3 months) and contain new features, performance 
+- **FEATURE**: Feature releases occur quarterly (every 3 months) and contain new features, performance 
 improvements, API additions, and bug fixes. To ensure safe and predictable upgrades for downstream 
-projects, minor releases have the following compatibility guarantees:
+projects, feature releases have the following compatibility:
   - No third-party dependency upgrades (e.g. Parquet, Arrow, ORC, Hadoop, Netty).
   - No behavior or semantic changes (e.g. SQL semantics, execution behavior, optimizer behavior, 
   configuration defaults). Exceptions require Spark PMC approval.
   - Public APIs may be added but not changed or removed.
   - Internal APIs (e.g. Catalyst, DSv2, planner) must remain compatible at best effort, or provide shims.
 
-  Each minor release will have a merge window where new patches can be merged, a QA window when 
+  Each feature release will have a merge window where new patches can be merged, a QA window when 
 only fixes can be merged, then a final period where voting occurs on release candidates. These 
-windows will be announced immediately after the previous minor release to give people plenty 
+windows will be announced immediately after the previous feature release to give people plenty 
 of time.
 - **MAINTENANCE**: Maintenance releases will occur on an ad hoc basis depending on specific patches 
 introduced (e.g. critical bug fixes and security patches) and their urgency. In general these releases 
@@ -104,7 +104,7 @@ In cases where there is a "Bad API", but where the cost of removal is also high,
 
 <h2>Release cadence</h2>
 
-Starting with Spark 4.2, minor releases occur quarterly (every 3 months), containing new features, 
+Starting with Spark 4.2, feature releases occur quarterly (every 3 months), containing new features, 
 improvements, and bug fixes. Major releases occur annually (every 12 months), allowing breaking 
 changes and dependency upgrades. Maintenance releases happen as needed in between for critical 
 bug fixes and security patches.
@@ -113,10 +113,10 @@ The following illustrates the expected release timeline:
 
 | Date  | Release | Type |
 | ----- | ----- | ----- |
-| May 2026 | Spark 4.2 | Minor |
-| August 2026 | Spark 4.3 | Minor |
-| November 2026 | Spark 4.4 | Minor |
-| February 2027 | Spark 4.5 | Minor (LTS) |
+| May 2026 | Spark 4.2 | Feature |
+| August 2026 | Spark 4.3 | Feature |
+| November 2026 | Spark 4.4 | Feature |
+| February 2027 | Spark 4.5 | Feature (LTS) |
 | May 2027 | Spark 5.0 | Major |
 
 <h3>Spark 4.2 release window</h3>
@@ -133,15 +133,15 @@ The following table summarizes the maintenance window for each release type:
 
 | Release Type | Cadence | Maintenance Window |
 | ----- | ----- | ----- |
-| Minor (x.y) | Every 3 months | 6 months |
-| LTS (final minor of a major) | Every 12 months | 18 months |
+| Feature (x.y) | Every 3 months | 6 months |
+| LTS (final feature of a major) | Every 12 months | 18 months |
 | Maintenance (x.y.z) | Ad hoc | N/A (patches only) |
 
-Non-LTS minor release branches will, generally, be maintained with bug fix releases for a period of 
+Non-LTS feature release branches will, generally, be maintained with bug fix releases for a period of 
 6 months.
 
-The final minor release within a major release will be designated as the "LTS" (Long-Term Support) release
-and will be maintained for 18 months. For example, Spark 4.5 (the final 4.x minor release) would be 
+The final feature release within a major release will be designated as the "LTS" (Long-Term Support) release
+and will be maintained for 18 months. For example, Spark 4.5 (the final 4.x feature release) would be 
 maintained for 18 months from its release date. LTS releases provide a stable target for ecosystem 
 projects and downstream vendors to standardize around.
 
